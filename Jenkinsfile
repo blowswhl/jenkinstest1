@@ -18,7 +18,7 @@ pipeline {
     stage('docker image pull') {
       steps {
         sh '''
-        ansible-playbook -i /etc/ansible/hosts /home/user/deploy_docker.yml
+        ansible-playbook -i /etc/ansible/hosts /home/user1/deploy_docker.yml
         '''
       }
     }
