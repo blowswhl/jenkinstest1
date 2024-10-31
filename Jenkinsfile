@@ -14,6 +14,13 @@ pipeline {
         '''
       }
     }
+    stage('docker image pull') {
+      steps {
+        sh '''
+        ansible-playbook -i /etc/ansible/hosts /home/user/deploy_docker.yml
+        sh '''
+      }
+    }
     stage('deploy and service') {
       steps {
         sh '''
