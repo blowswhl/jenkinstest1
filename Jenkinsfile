@@ -18,7 +18,7 @@ pipeline {
     stage('docker image pull') {
       steps {
         sh '''
-        ansible-playbook -i /etc/ansible/hosts /home/user1/node-docker.yml --private-key /var/lib/jenkins/.ssh/id_rsa
+        ansible-playbook -i /etc/ansible/hosts /home/user1/node-docker.yml -u user1
         '''
       }
     }
