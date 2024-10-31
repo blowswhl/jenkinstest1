@@ -9,6 +9,7 @@ pipeline {
     stage('docker build and push') {
       steps {
         sh '''
+        docker login -u blowswhl -p dhaprkahs1!
         docker build -t blowswhl/cicdtest:green .
         docker push blowswhl/cicdtest:green
         '''
