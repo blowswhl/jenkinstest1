@@ -25,8 +25,8 @@ pipeline {
     stage('deploy and service') {
       steps {
         sh '''
-        ansible master -m command -a 'kubectl create deploy web-green --replicas=3 --image=blowswhl/cicdtest:green'
-        ansible master -m command -a 'kubectl expose deploy web-green --type=LoadBalancer --port=80 --target-port=80 --name=web-green-svc'
+        ansible master -m command -a 'kubectl create deploy web-green --replicas=3 --image=blowswhl/cicdtest:green' -u user1
+        ansible master -m command -a 'kubectl expose deploy web-green --type=LoadBalancer --port=80 --target-port=80 --name=web-green-svc' -u user1
         '''
       }
     }
