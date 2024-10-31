@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkinstest1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jenkinstest1
+  template:
+    metadata:
+      labels:
+        app: jenkinstest1
+    spec:
+      containers:
+      - name: jenkinstest1
+        image: blowswhl/keduitlab:yellow  # 자신의 Docker Hub 이미지를 사용
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkinstest1-service
+spec:
+  selector:
+    app: jenkinstest1
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
